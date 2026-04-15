@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vellore Media Linker V2</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">Vellore Media Linker <span>V2</span></div>
+        <p class="subtitle">Uploads, pastas e links públicos para TVs corporativas.</p>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+        <button class="nav-btn" data-tab="upload">Upload</button>
+        <button class="nav-btn" data-tab="folders">Pastas</button>
+        <button class="nav-btn" data-tab="files">Arquivos</button>
+        <button class="nav-btn" data-tab="audit">Auditoria</button>
+      </nav>
+      <div class="side-footer">
+        <div id="serverInfo" class="server-info">Carregando configuração…</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Painel de mídia pública</h1>
+          <p>Versão pronta para homologação e deploy em servidor Windows ou Linux.</p>
+        </div>
+        <div class="pill">Sem dependências externas</div>
+      </header>
+
+      <section id="toast" class="toast hidden"></section>
+
+      <section class="tab active" id="tab-dashboard">
+        <div class="cards" id="summaryCards"></div>
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Uploads recentes</h2>
+            <button class="secondary" id="refreshDashboard">Atualizar</button>
+          </div>
+          <div id="recentFiles" class="recent-grid"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-upload">
+        <div class="panel form-panel">
+          <div class="panel-header"><h2>Novo upload</h2></div>
+          <form id="uploadForm" class="form-grid">
+            <label>
+              <span>Usuário</span>
+              <input type="text" id="uploadedBy" value="RH" maxlength="120" required>
+            </label>
+            <label>
+              <span>Pasta destino</span>
+              <select id="folderPath"></select>
+            </label>
+            <label class="full">
+              <span>Arquivo</span>
+              <input type="file" id="fileInput" required>
+            </label>
+            <label class="full">
+              <span>Nome tratado</span>
+              <input type="text" id="safeNamePreview" readonly>
+            </label>
+            <div class="full actions-row">
+              <button type="submit">Enviar arquivo</button>
+              <button type="button" class="secondary" id="clearUpload">Limpar</button>
+            </div>
+          </form>
+        </div>
+        <div class="panel" id="uploadResultPanel">
+          <div class="panel-header"><h2>Resultado</h2></div>
+          <div id="uploadResult" class="empty-state">Nenhum upload realizado nesta sessão.</div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-folders">
+        <div class="panel form-panel">
+          <div class="panel-header"><h2>Criar pasta</h2></div>
+          <form id="folderForm" class="form-grid">
+            <label>
+              <span>Usuário</span>
+              <input type="text" id="folderCreatedBy" value="RH" maxlength="120" required>
+            </label>
+            <label>
+              <span>Pasta pai</span>
+              <select id="parentFolder"></select>
+            </label>
+            <label>
+              <span>Nome da nova pasta</span>
+              <input type="text" id="newFolderName" placeholder="ex: abril-2026" required>
+            </label>
+            <div class="actions-row">
+              <button type="submit">Criar pasta</button>
+            </div>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Pastas cadastradas</h2>
+            <button class="secondary" id="refreshFolders">Atualizar</button>
+          </div>
+          <div id="foldersList" class="list"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-files">
+        <div class="panel">
+          <div class="panel-header split">
+            <h2>Arquivos</h2>
+            <div class="toolbar">
+              <input type="search" id="searchFiles" placeholder="Buscar por nome, pasta ou usuário">
+              <select id="filterFolderFiles"></select>
+              <button class="secondary" id="refreshFiles">Atualizar</button>
+            </div>
+          </div>
+          <div id="filesTable" class="table-wrap"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-audit">
+        <div class="panel">
+          <div class="panel-header split">
+            <h2>Auditoria</h2>
+            <button class="secondary" id="refreshAudit">Atualizar</button>
+          </div>
+          <div id="auditList" class="list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
