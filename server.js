@@ -203,6 +203,15 @@ function iconForExtension(ext) {
   }
 }
 
+
+function withResolvedPublicUrl(file) {
+  return {
+    ...file,
+    publicUrl: makePublicUrl(file.folderPath, file.safeName),
+    icon: file.icon || iconForExtension(file.extension)
+  };
+}
+
 function summarizeDb(db) {
   const totalBytes = db.files.reduce((sum, item) => sum + (item.sizeBytes || 0), 0);
   return {
@@ -235,7 +244,7 @@ async function handleApi(req, res, urlObj) {
 
   if (req.method === 'GET' && pathname === '/api/dashboard') {
     const db = await readDb();
-    const files = [...db.files].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 8);
+    const files = [...db.files].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 8).map(withResolvedPublicUrl);
     return sendJson(res, 200, { summary: summarizeDb(db), recentFiles: files });
   }
 
@@ -290,7 +299,7 @@ async function handleApi(req, res, urlObj) {
       );
     }
     files.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    return sendJson(res, 200, { files });
+    return sendJson(res, 200, { files: files.map(withResolvedPublicUrl) });
   }
 
   if (req.method === 'POST' && pathname === '/api/files/upload') {

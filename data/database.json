@@ -1,28 +1,5 @@
 {
-  "files": [
-    {
-      "id": "d71e18c3-e2e6-4406-b9ca-74e1f1dbd83b",
-      "originalName": "Lufthansa_Boeing_747-8_(16093562187).jpg",
-      "safeName": "lufthansa_boeing_747-8_-16093562187.jpg",
-      "extension": ".jpg",
-      "mimeType": "image/jpeg",
-      "sizeBytes": 128341,
-      "folderPath": "",
-      "relativePath": "lufthansa_boeing_747-8_-16093562187.jpg",
-      "publicUrl": "http://localhost:3001/arquivos/lufthansa_boeing_747-8_-16093562187.jpg",
-      "uploadedBy": "RH",
-      "icon": "🖼️",
-      "createdAt": "2026-04-14T19:09:18.629Z"
-    }
-  ],
+  "files": [],
   "folders": [],
-  "audit": [
-    {
-      "id": "eb09c331-0c82-4fa0-a686-3225ec3eded7",
-      "action": "file_uploaded",
-      "createdAt": "2026-04-14T19:09:18.629Z",
-      "actor": "RH",
-      "target": "lufthansa_boeing_747-8_-16093562187.jpg"
-    }
-  ]
+  "audit": []
 }

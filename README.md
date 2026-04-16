@@ -131,3 +131,7 @@ https://midia.suaempresa.com/arquivos/rh/comunicados/video.mp4
 - Esta versão usa JSON local como banco para simplificar deploy e homologação.
 - A aplicação já foi desenhada para deploy atrás de IIS ou Nginx.
 - Para produção mais pesada, o próximo passo é trocar JSON por SQLite ou PostgreSQL e rodar o processo Node como serviço.
+
+
+## Correção V2.1
+- URLs públicas antigas gravadas no banco agora são recalculadas automaticamente com base nas variáveis atuais do ambiente.
