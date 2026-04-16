@@ -1,0 +1,10 @@
+{
+  "name": "vellore-media-linker-v2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Gerador de links públicos para mídia corporativa - versão sem dependências externas.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
